@@ -12,15 +12,14 @@ class App extends React.Component{
   render(){
     return (
       <div className="App">
-      <Router>
-          <Switch>
-              <Route path="/Home" component="{Home}" />
-              <Route path="/Reactjs" component="{Reactjs}" />
-              <Redirect to="/Home" />
-          </Switch>
-      </Router>
+      <Router >
+      <Switch>
+         <Route path="/Home" component={Home} />
+         <Route path="/Reactjs" component={Reactjs} />
+           <Redirect to="/Home" />
+       </Switch>
+        </Router>
       </div>
-  
     );
   }
 }

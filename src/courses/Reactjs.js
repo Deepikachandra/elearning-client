@@ -1,7 +1,6 @@
 import React from "react";
 import { Dialog } from 'primereact/dialog';
 import ReactPlayer from 'react-player'
-import sampleVideo from "../assets/SampleVideo_360x240_5mb.mp4"
 
 class Reactjs extends React.Component{
   constructor(props) {
@@ -13,23 +12,20 @@ class Reactjs extends React.Component{
       error:false
     }
   }
-  callAPI() {
-    fetch('http://localhost:9000/enrolPopup')
-        .then(res => res.text())
-        .then(res => this.setState({
-            apiResponse: res,
-            displayDialog: res,
-            playingVideo: false
-        }))
-        .catch(res => this.setState({
-            error: true
-        }))
-}
 
-componentWillMount() {
-    this.callAPI();
-}
+  callAPI(){
+    fetch('http://localhost:9000/enrolPopup')
+     .then(res => res.text())
+     .then(res => this.setState({apiResponse: res,displayDialog:res,playingVideo:false}))
+     .catch(res => this.setState({error: true}))
+  }
+
+  componentWillMount(){
+      this.callAPI();
+  }
+
   render(){
+    console.log("error",this.state.error)
     return (
       <div> 
         {!this.state.error?<div>
@@ -43,6 +39,7 @@ componentWillMount() {
         :<p></p>}
       </div>:<p> Something went wrong!</p>}
       </div>
+
     );
   }
 }
