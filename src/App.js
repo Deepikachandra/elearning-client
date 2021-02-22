@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+import React, { Component } from "react";
 import './App.css';
+import { HashRouter as Router, Switch, Route, NavLink, Redirect } from 'react-router-dom';
+import Home from './Home'
+import Reactjs from './courses/Reactjs'
+import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component{
+
+  render(){
+    return (
+      <div className="App">
+      <Router>
+          <Switch>
+              <Route path="/Home" component="{Home}" />
+              <Route path="/Reactjs" component="{Reactjs}" />
+              <Redirect to="/Home" />
+          </Switch>
+      </Router>
+      </div>
+  
+    );
+  }
 }
 
 export default App;
